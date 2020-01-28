@@ -68,7 +68,7 @@ Code-ray XG PRO Community 진단 도구 산출물
 # 7. 위험한 형식의 파일 업로드
 ![image](https://user-images.githubusercontent.com/49786050/73183094-9d987600-415d-11ea-82d5-8644249dd6ae.png)  
 분석도구에는 잡히지 않았으나, 파일 업로드 시 적절한 확장자 및 사이즈 검증 부재를 통하여 공격자는 스크립트 파일 삽입이 가능해져 시스템 내부 침투와 외부 연결이 가능할 소지가 있다.  
-#### 대응방안은 업로드할 파일의 크기 제한 및 허용할 화이트 리스트 기반의 확장자만을 if문을 통하여 검증 후에 업로드 할 수 있도록 한다. ex) if(mr.getSize() > MAX_FILESIZE) { //ERROR } String file_name = mr.getOriginalFilename.toLowwerCase(); if (mr.endsWith(".doc") || mr.endsWith(".hwp") || 등등) { //파일업로드 }
+#### 대응방안은 업로드할 파일의 크기 제한 및 허용할 화이트 리스트 기반의 확장자만을 if문을 통하여 검증 후에 업로드 할 수 있도록 한다. ex) if(mr.getSize() > MAX_FILESIZE) { //ERROR } String file_name = mr.getOriginalFilename.toLowerCase(); if (mr.endsWith(".doc") || mr.endsWith(".hwp") || 등등) { //파일업로드 }
 
 # 8. 제거되지 않은 디버그 코드
 ![image](https://user-images.githubusercontent.com/49786050/73184011-16e49880-415f-11ea-8007-14f42ad517ab.png)  
