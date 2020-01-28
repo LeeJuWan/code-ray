@@ -68,7 +68,7 @@ Code-ray XG PRO Community 진단 도구 산출물
 # 7. 위험한 형식의 파일 업로드
 ![image](https://user-images.githubusercontent.com/49786050/73183094-9d987600-415d-11ea-82d5-8644249dd6ae.png)  
 분석도구에는 잡히지 않았으나, 파일 업로드 시 적절한 확장자 및 사이즈 검증 부재를 통하여 공격자는 스크립트 파일 삽입이 가능해져 시스템 내부 침투와 외부 연결이 가능할 소지가 있다.  
-#### 대응방안은 업로드할 파일의 크기 제한 및 허용할 화이트 리스트 기반의 확장자만을 if문을 통하여 검증 후에 업로드 할 수 있도록 한다. ex) if(mr.gerSize() < MAX_FILESIZE) { //ERROR} String file_name = mr.gerOriginalFilename.toLowwerCase(); if (mr.endsWith(".doc") || mr.endsWith(".hwp") || 등등) {//파일업로드}
+#### 대응방안은 업로드할 파일의 크기 제한 및 허용할 화이트 리스트 기반의 확장자만을 if문을 통하여 검증 후에 업로드 할 수 있도록 한다. ex) if(mr.getSize() > MAX_FILESIZE) { //ERROR } String file_name = mr.getOriginalFilename.toLowwerCase(); if (mr.endsWith(".doc") || mr.endsWith(".hwp") || 등등) { //파일업로드 }
 
 # 8. 제거되지 않은 디버그 코드
 ![image](https://user-images.githubusercontent.com/49786050/73184011-16e49880-415f-11ea-8007-14f42ad517ab.png)  
@@ -77,10 +77,10 @@ Code-ray XG PRO Community 진단 도구 산출물
 #### 대응방안은 디버그 코드를 제거한다.  
 
 이외에도 ~~인증 시도 부재, 비밀번호 정책 부재, 전송간 암호화, 평문 저장 등 취약점들이 존재하였다~~  
-인증 시도 부재는 5회이상 로그인 실패시 계정 잠금 및 일정시간 잠금을 유도하여 패스워드 브루토 포싱을 방어한다.  
-비밀번호 정책 부재는 숫자+영문자+특수문자 9자이상을 통하여 패스워드 크랙의 시간을 늘어나게 한다.    
-전송간 암호화는 전송 시 암호화 또는 HTTPS 프로토콜을 통하여 전송 간 암호화를 진행한다.  
-평문 저장은 서버에서 저장 시 사용자의 비밀번호를 SHA-256~512, Bcrypt 등 해시 함수화 시켜 안전하게 저장한다.  
+##### 1- 인증 시도 부재는 5회이상 로그인 실패시 계정 잠금 및 일정시간 잠금을 유도하여 패스워드 브루토 포싱을 방어한다.  
+##### 2- 비밀번호 정책 부재는 숫자+영문자+특수문자 9자이상을 통하여 패스워드 크랙의 시간을 늘어나게 한다.    
+##### 3- 전송간 암호화는 전송 시 암호화 또는 HTTPS 프로토콜을 통하여 전송 간 암호화를 진행한다.  
+##### 4- 평문 저장은 서버에서 저장 시 사용자의 비밀번호를 SHA-256~512, Bcrypt 등 해시 함수화 시켜 안전하게 저장한다.  
 
 #### 취약점 분석을 하며 부족한 부분은 행자부 47개 취약점 가이드라인을 참고한다.
 <https://www.kisa.or.kr/public/laws/laws3_View.jsp?cPage=6&mode=view&p_No=259&b_No=259&d_No=88&ST=T&SV=>  
