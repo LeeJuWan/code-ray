@@ -55,8 +55,8 @@ Code-ray XG PRO Community 진단 도구 산출물
 #### 대응방안은 setMaxAge의 값을 사용자가 접속하고 있을때마다 갱신할 수 있도록  
 #### 음수 값으로 -60x2로 설정 및 로그아웃 시 setMaxAge(0)으로 셋업하여 쿠키를 삭제한다.  
 
-**분석 코드의 서비스는 http 프로토콜을 사용하고 있으나, 향후 https를 사용한다면 전송 간 쿠키 노출이 발생할 수 있다.**  
-#### 대응방안은 setSecure(true);를 설정하여 전송구간 쿠키 정보를 노출하지 않도록 대응한다.  
+#### 분석 코드의 서비스는 http 프로토콜을 사용하고 있으나, 향후 https를 사용한다면 전송 간 쿠키 노출 방지를 위해  
+#### setSecure(true);를 설정하여 https 통신일때만 쿠키를 전송하여, 쿠키를 보호한다.    
 
 # 6. XSS 취약점
 ![image](https://user-images.githubusercontent.com/49786050/73182193-ee0ed400-415b-11ea-998f-c66719ea3e73.png)  
